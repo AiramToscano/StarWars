@@ -5,6 +5,9 @@ import fetchAPI from '../services/fetchAPI';
 
 function StarwarsProvider({ children }) {
   const [nameStarwars, setnameStarwars] = useState([]);
+  const [filterByName, setfilterByName] = useState('');
+
+  // const [filterArrayName, setfilterArrayName] = useState([]);
 
   const getApi = async () => {
     const allPlanets = await fetchAPI();
@@ -12,9 +15,25 @@ function StarwarsProvider({ children }) {
     setnameStarwars(allPlanets.results);
   };
 
+  const filterName = (e) => {
+    setfilterByName(e);
+    // setfilterArrayName(nameStarwars);
+    const filterNameArray = nameStarwars
+      .filter((name) => name.name.includes(e));
+    // setnameStarwars(filterNameArray);
+    console.log(filterNameArray);
+    // setfilterArrayName(filterNameArray);
+    if (e === '') {
+      getApi();
+    }
+    setnameStarwars(filterNameArray);
+  };
+
   const Provider = {
     nameStarwars,
     getApi,
+    filterName,
+    filterByName,
   };
 
   return (

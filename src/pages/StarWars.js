@@ -3,7 +3,7 @@ import StarwarsContext from '../Context/StarwarsContext';
 
 function StarWars() {
   const { Provider } = useContext(StarwarsContext);
-  const { getApi, nameStarwars } = Provider;
+  const { getApi, nameStarwars, filterByName, filterName } = Provider;
 
   useEffect(() => {
     getApi();
@@ -12,7 +12,17 @@ function StarWars() {
   return (
     <div>
       <header>
-        <h1>Meu Healder</h1>
+        <form>
+          <label htmlFor="teste">
+            <input
+              onChange={ (e) => filterName(e.target.value) }
+              name="filterByName"
+              id="teste"
+              value={ filterByName }
+              data-testid="name-filter"
+            />
+          </label>
+        </form>
       </header>
       <table>
         <thead>
