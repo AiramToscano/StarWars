@@ -7,27 +7,27 @@ function StarWars() {
     filterByColuna, filterByComp, filterByValue,
     filterColuna, filterComp, filterValue,
     filterRotationButom, filterPopulationButom, filterOrbitalButom,
-    filterDiameterButom, filterSurfaceButom } = Provider;
+    filterDiameterButom, filterSurfaceButom, filterAllStates } = Provider;
 
   useEffect(() => {
     getApi();
   }, []);
-
+  // console.log(filterAllStates);
   const buttomfilter = () => {
     if (filterByColuna === 'rotation_period') {
-      filterRotationButom(filterByValue, filterByComp);
+      filterRotationButom(filterByValue, filterByComp, filterByColuna);
     }
     if (filterByColuna === 'diameter') {
-      filterDiameterButom(filterByValue, filterByComp);
+      filterDiameterButom(filterByValue, filterByComp, filterByColuna);
     }
     if (filterByColuna === 'population') {
-      filterPopulationButom(filterByValue, filterByComp);
+      filterPopulationButom(filterByValue, filterByComp, filterByColuna);
     }
     if (filterByColuna === 'orbital_period') {
-      filterOrbitalButom(filterByValue, filterByComp);
+      filterOrbitalButom(filterByValue, filterByComp, filterByColuna);
     }
     if (filterByColuna === 'surface_water') {
-      filterSurfaceButom(filterByValue, filterByComp);
+      filterSurfaceButom(filterByValue, filterByComp, filterByColuna);
     }
   };
   return (
@@ -47,12 +47,9 @@ function StarWars() {
             name="filterByColuna"
             data-testid="column-filter"
           >
-            {/* <option value="">Escolha</option> */}
-            <option value="population">population</option>
-            <option value="orbital_period">orbital_period</option>
-            <option value="diameter">diameter</option>
-            <option value="rotation_period">rotation_period</option>
-            <option value="surface_water">surface_water</option>
+            {filterAllStates.map((e, index) => (
+              <option key={ index } value={ e }>{e}</option>
+            ))}
           </select>
           <select
             onChange={ (e) => filterComp(e.target.value) }
@@ -60,7 +57,6 @@ function StarWars() {
             name="filterByComp"
             data-testid="comparison-filter"
           >
-            {/* <option value="">Escolha</option> */}
             <option value="maior que">maior que</option>
             <option value="menor que">menor que</option>
             <option value="igual a">igual a</option>
