@@ -48,17 +48,15 @@ function StarwarsProvider({ children }) {
     // const numberInt = parseFloat(number);
     if (comparacao === 'menor que') {
       const buttom = nameStarwars.filter((e) => e.rotation_period < number);
-      // setnameStarwars(buttom);
-      console.log(buttom);
+      setnameStarwars(buttom);
     }
     if (comparacao === 'igual a') {
       const buttom = nameStarwars.filter((e) => e.rotation_period === number);
-      // setnameStarwars(buttom);
-      console.log(buttom);
+      setnameStarwars(buttom);
     }
     if (comparacao === 'maior que') {
-      const buttom = nameStarwars.filter((e) => e.rotation_period >= number);
-      console.log(buttom);
+      const buttom = nameStarwars.filter((e) => e.rotation_period > number);
+      setnameStarwars(buttom);
     }
   };
 
