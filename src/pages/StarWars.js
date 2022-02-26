@@ -6,29 +6,15 @@ function StarWars() {
   const { getApi, nameStarwars, filterByName, filterName,
     filterByColuna, filterByComp, filterByValue,
     filterColuna, filterComp, filterValue,
-    filterRotationButom, filterPopulationButom, filterOrbitalButom,
-    filterDiameterButom, filterSurfaceButom, filterAllStates } = Provider;
+    filterButom, filterAllStates } = Provider;
 
   useEffect(() => {
     getApi();
   }, []);
-  // console.log(filterAllStates);
-  const buttomfilter = () => {
-    if (filterByColuna === 'rotation_period') {
-      filterRotationButom(filterByValue, filterByComp, filterByColuna);
-    }
-    if (filterByColuna === 'diameter') {
-      filterDiameterButom(filterByValue, filterByComp, filterByColuna);
-    }
-    if (filterByColuna === 'population') {
-      filterPopulationButom(filterByValue, filterByComp, filterByColuna);
-    }
-    if (filterByColuna === 'orbital_period') {
-      filterOrbitalButom(filterByValue, filterByComp, filterByColuna);
-    }
-    if (filterByColuna === 'surface_water') {
-      filterSurfaceButom(filterByValue, filterByComp, filterByColuna);
-    }
+
+  const buttomfilter = (state, allstate) => {
+    const selectState = allstate.find((colun) => colun === state);
+    filterButom(filterByValue, filterByComp, selectState);
   };
   return (
     <div>
@@ -42,13 +28,14 @@ function StarWars() {
             data-testid="name-filter"
           />
           <select
-            onChange={ (e) => filterColuna(e.target.value) }
+            onChange={ ({ target }) => filterColuna(target.value) }
             value={ filterByColuna }
             name="filterByColuna"
             data-testid="column-filter"
           >
-            {filterAllStates.map((e, index) => (
-              <option key={ index } value={ e }>{e}</option>
+            {/* <option value="">Selecione uma opção</option> */}
+            {filterAllStates.map((e) => (
+              <option value={ e } key={ e }>{e}</option>
             ))}
           </select>
           <select
@@ -75,7 +62,7 @@ function StarWars() {
         <button
           type="button"
           data-testid="button-filter"
-          onClick={ () => buttomfilter() }
+          onClick={ () => buttomfilter(filterByColuna, filterAllStates) }
         >
           filtro
         </button>
