@@ -26,7 +26,7 @@
 A principal proposta desse projeto é trabalhar com React Hooks, colocando em prática o que foi passado no conteúdo da trybe, por fim, fiz uma implementação basica utilizando Tailwind.css
 
 ## Preview do projeto :
-![recipes](https://github.com/AiramToscano/StarWars/blob/airamtoscano/startwars.gif)
+![recipes](https://github.com/AiramToscano/StarWars/blob/airamtoscano/tailwind.config.js)
 
 
 ## Deploy do projeto :
