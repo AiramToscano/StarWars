@@ -8,10 +8,11 @@ function StarwarsProvider({ children }) {
   const [filterByName, setfilterByName] = useState('');
   const [filterByColuna, setfilterByColuna] = useState('population');
   const [filterByComp, setfilterByComp] = useState('maior que');
-  const [filterByValue, setfilterByValue] = useState(0);
+  const [filterByValue, setfilterByValue] = useState('');
   const [filterAllStates, setfilterAllStates] = useState([
     'population', 'orbital_period', 'diameter', 'rotation_period',
     'surface_water']);
+  const [buttomFilters, setbuttomFilter] = useState([]);
 
   // const [filterArrayName, setfilterArrayName] = useState([]);
 
@@ -50,24 +51,14 @@ function StarwarsProvider({ children }) {
     setfilterByValue(e);
   };
 
-  const filterButom = (number, comparacao, state) => {
-    const numberInt = Number(number);
-    const filter = filterAllStates.filter((e) => e !== state);
-    setfilterByColuna(filter[0]);
-    setfilterAllStates(filter);
-    // setfilterByColuna(filter);
-    if (comparacao === 'menor que') {
-      const buttom = nameStarwars.filter((e) => Number(e[state]) < numberInt);
-      setnameStarwars(buttom);
-    }
-    if (comparacao === 'igual a') {
-      const buttom = nameStarwars.filter((e) => Number(e[state]) === numberInt);
-      setnameStarwars(buttom);
-    }
-    if (comparacao === 'maior que') {
-      const buttom = nameStarwars.filter((e) => Number(e[state]) > numberInt);
-      setnameStarwars(buttom);
-    }
+  const filterButom = (obj) => {
+    setbuttomFilter((prev) => [...prev, obj]);
+  };
+
+  const allButom = (comparacao) => {
+    const newFilter = filterAllStates.filter((e) => e !== comparacao);
+    setfilterByColuna(newFilter[0]);
+    setfilterAllStates(newFilter);
   };
 
   const Provider = {
@@ -81,8 +72,10 @@ function StarwarsProvider({ children }) {
     filterColuna,
     filterComp,
     filterValue,
-    filterButom,
     filterAllStates,
+    filterButom,
+    buttomFilters,
+    allButom,
   };
 
   return (
