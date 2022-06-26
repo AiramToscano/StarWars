@@ -15,7 +15,7 @@
 ---
  
 # Para utilizar o projeto :
-- `git clone git@github.com:AiramToscano/Pokedex-Dio.git`
+- `git clone git@github.com:AiramToscano/StarWars.git`
 - `npm install`
 - `npm start`
 
