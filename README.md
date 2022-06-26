@@ -23,7 +23,10 @@
 - [StarWars](https://swapi-trybe.herokuapp.com/api/planets/)
 
 # Observações :
-A principal proposta desse projeto é trabalhar com React Hooks, colocando em prática o que foi passado no conteúdo da trybe, por fim, fiz uma implementação basica utilizando Tailwind.css.
+A principal proposta desse projeto é trabalhar com React Hooks, colocando em prática o que foi passado no conteúdo da trybe, por fim, fiz uma implementação basica utilizando Tailwind.css
+
+## Preview do projeto :
+![recipes](https://github.com/AiramToscano/StarWars/blob/airamtoscano/startwars.gif)
 
 
 ## Deploy do projeto :
